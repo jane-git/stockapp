@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './componets/layout/Footer';
 import './App.css';
 
 function App() {
@@ -35,7 +36,10 @@ function App() {
     </tr>
   </tbody>
 </table>
+
+        <Footer/>
     </div>
+
   );
 }
 
