@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
 export default class Register extends Component {
     constructor() {
@@ -20,12 +21,16 @@ export default class Register extends Component {
     onSubmit(e) {
         e.preventDefault();
 
-        const newUser = {
+        const logInUser = {
             email: this.state.email,
             password: this.state.password
         };
 
-        console.log(newUser);
+        // console.log(logInUser);
+        axios
+            .post("http://131.181.190.87:3000/user/login", logInUser)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err.message));
     }
 
 

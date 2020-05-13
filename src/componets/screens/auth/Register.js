@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import axios from "axios";
+
 
 export default class Register extends Component {
     constructor() {
@@ -24,8 +26,10 @@ export default class Register extends Component {
             email: this.state.email,
             password: this.state.password
         };
-
-        console.log(newUser);
+        axios
+            .post("http://131.181.190.87:3000/user/register", newUser)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err.message));
     }
 
 
@@ -40,7 +44,7 @@ export default class Register extends Component {
                     <div className="col-md-8 m-auto">
                         <h1 className="display-4 text-center">Sign Up</h1>
                         <p className="lead text-center">
-                            Jane's Stock one Register
+                            Jane's Stock app Register
                         </p>
                         <form onSubmit={this.onSubmit}>
                             <div className="form-group">
