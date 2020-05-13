@@ -1,40 +1,12 @@
-import React, { Component } from 'react';
-import { Table } from 'reactstrap';
-import { baseAPIs } from '../../API';
-import { symbol } from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Table, Spinner } from 'reactstrap';
 
-export default class Quote extends Component {
-
-    //하나의 객체만 받는다.
-    constructor() {
-        super();
-        this.state = {
-            loading: true,
-            result: {},
-            errors: {}
-        };
-    }
-
-    async componentDidMount() {
-        const { match: {
-            params: { symbol }
-        }, history: { push }
-        } = this.props;
-        
-        try {
-            const { data } = await baseAPIs.quoteAPI(symbol);
-            this.setState({result: data});
-        } catch {
-            this.setState({ error: "Cant't find anything."});
-        } finally {
-            this.setState({ loading: false});
-        }    
-    }
-
-    render() {
-        const {result, loading, error} = this.state;
-        return (
-            <div className="Landing">
+const QuotePresenter = ({ result, error, loading }) => (
+    loading ? (
+        <Spinner color="primary"/>
+    ) : (
+        <div className="Landing">
             <div className="row">
                 <div className="col-md-10 m-auto">
                     <h1 className="display-4 text-center">
@@ -75,13 +47,21 @@ export default class Quote extends Component {
                                     {/*<td>{item.industry}</td>*/}
                                 </tr>
                             </tbody>
-
                         </Table>
-
-                    </div>
                  </div>
             </div>
+        </div>
 
-        )
-    }
-}
+    )
+ 
+)
+
+
+QuotePresenter.propTypes = {
+    result: PropTypes.object,
+    error: PropTypes.string,
+    loading: PropTypes.bool.isRequired    
+    
+};
+
+export default QuotePresenter;
