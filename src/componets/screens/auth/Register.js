@@ -40,7 +40,7 @@ export default class Register extends Component {
                     <div className="col-md-8 m-auto">
                         <h1 className="display-4 text-center">Sign Up</h1>
                         <p className="lead text-center">
-                            Jane's Stock app Register
+                            Jane's Stock one Register
                         </p>
                         <form onSubmit={this.onSubmit}>
                             <div className="form-group">

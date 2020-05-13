@@ -20,7 +20,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <div className="Container">
               <Route exact path="/stock" component={Stock}/>
-              <Route exact path="/quote" component={Quote}/>
+              <Route exact path="/:symbol" component={Quote}/>
               <Route exact path="/register" component={Register}/>
               <Route exact path="/login" component={Login}/>
             </div>

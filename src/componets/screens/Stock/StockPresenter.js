@@ -17,7 +17,7 @@ const StockPresenter = ({ loading, results, error }) => {
                             Stock Info
                         </h1>
                         <p className="lead text-center">
-                            {"welcom"}
+                            {"Stock to see the available companies"}
                         </p>
                         <Table hover>
                             <thead>
@@ -34,7 +34,7 @@ const StockPresenter = ({ loading, results, error }) => {
                                         <th className="text-center">{index + 1}</th>
                                         <td className="text-center">{item.name}</td>
                                         <td className="text-center">
-                                            <Link to='quote'>
+                                            <Link to={`${item.symbol}`}>
                                                 {item.symbol}
                                             </Link>
                                         </td>

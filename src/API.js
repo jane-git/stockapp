@@ -7,5 +7,5 @@ const api = axios.create({
 
 export const baseAPIs = {
     symbolAPI: () => api.get("/symbols"),
-    quoteAPI: symbol => api.get(`/symbols/${symbol}`)
+    quoteAPI: symbol => api.get(`/${symbol}`)
 }

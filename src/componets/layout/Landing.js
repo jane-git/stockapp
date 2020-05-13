@@ -9,11 +9,13 @@ class Landing extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 text-center">
-                                <h1 className="display-3 mb-4">Jane's Stock app</h1>
+                                <h1 className="display-3 mb-4">Jane's Stock one</h1>
                                 <p className="lead">
                                     {' '}
-                                    Welcom
+                                    Welcome to “Jane's Stock one” No 1 stock analysts portal site
+
                                 </p>
+                                
                                 <hr />
                                 <Link to="register" className="btn btn-lg btn-info mr-2">
                                     Sign Up

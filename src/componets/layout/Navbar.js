@@ -8,8 +8,9 @@ export default class Navbar extends Component {
            <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
                 <div className="container">
                     <Link className="navbar-brand" to="/">
-                        Jane's Stock app
+                        Jane's Stock one - Main
                     </Link>
+   
                     <button
                     className="navbar-toggler"
                     type="button"
