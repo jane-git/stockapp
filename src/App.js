@@ -2,16 +2,30 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
+import jwt_decode from 'jwt-decode';
+import setAuthToken from './utils/setAUthToken';
+import {setCurrentUser} from './actions/authActions';
 
 import Footer from './componets/layout/Footer';
 import Navbar from './componets/layout/Navbar';
 import Landing from './componets/layout/Landing';
 import Stock from './componets/screens/Stock';
 import Quote from './componets/screens/Quote';
+import Dashboard from './componets/screens/dashboard';
 import Register from './componets/screens/auth/Register';
 import Login from './componets/screens/auth/Login';
 
 import './App.css';
+
+//check for token
+if (localStorage.jwtToken) {
+  //set auth token header auth
+  setAuthToken(localStorage.jwtToken);
+  //Decode token and get user info and exp
+  const decoded = jwt_decode(localStorage.jwtToken);
+  //set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
+}
 
 class App extends Component {
     render() {
@@ -23,6 +37,7 @@ class App extends Component {
               <Route exact path="/" component={Landing} />
               <div className="Container">
                 <Route exact path="/stock" component={Stock}/>
+                <Route exact path="/dashboard" component={Dashboard}/>
               {/* <Route exact path="/:symbol" component={Quote}/>*/}
                 <Route exact path="/register" component={Register}/>
                 <Route exact path="/login" component={Login}/>

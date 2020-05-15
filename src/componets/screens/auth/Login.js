@@ -17,6 +17,12 @@ import { loginUser } from '../../../actions/authActions';
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth.isAuthenticated) {
+            this.props.history.push('/dashboard');
+        }
+    }
+
     onChange(e) {
         this.setState({[e.target.name]: e.target.value});
     }
