@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+// import axios from 'axios';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../../../actions/authActions';
 
-export default class Register extends Component {
+ class Login extends Component {
     constructor() {
         super();
         this.state = {
@@ -21,16 +24,17 @@ export default class Register extends Component {
     onSubmit(e) {
         e.preventDefault();
 
-        const logInUser = {
+        const userData = {
             email: this.state.email,
             password: this.state.password
         };
 
         // console.log(logInUser);
-        axios
-            .post("http://131.181.190.87:3000/user/login", logInUser)
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err.message));
+        // axios
+        //     .post("http://131.181.190.87:3000/user/login", logInUser)
+        //     .then(res => console.log(res.data))
+        //     .catch(err => console.log(err.message));
+        this.props.loginUser(userData);
     }
 
 
@@ -39,7 +43,7 @@ export default class Register extends Component {
         const { email, password, errors } =  this.state;
 
         return (
-            <div className="register">
+            <div className="login">
             <div className="container">
                 <div className="row">
                     <div className="col-md-8 m-auto">
@@ -77,3 +81,17 @@ export default class Register extends Component {
         )
     }
 }
+
+Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, {loginUser})(Login);
