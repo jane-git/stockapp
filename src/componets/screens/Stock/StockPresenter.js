@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Table, Spinner } from 'reactstrap'
 import { Link } from 'react-router-dom';
 
@@ -54,11 +53,5 @@ const StockPresenter = ({ loading, results, error }) => {
     )
 };
 
-StockPresenter.propTypes = {
-    loading: PropTypes.bool.isRequired,
-    results: PropTypes.array,
-    error: PropTypes.string
-    
-};
 
 export default StockPresenter;
