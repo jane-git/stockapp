@@ -20,7 +20,7 @@
 //         //     .get('http://131.181.190.87:3000/stocks/symbols')
 //         //     .then(res => this.setState( {results: res.data, loading: false}))
 //         //     .catch(err => this.setState({errors: err, loading: false}))
-        
+
 //         try {
 
 //             const {
@@ -41,54 +41,65 @@
 
 //     }
 
-
-
 //     render() {
-
 
 //         const {loading, results, errors} = this.state;
 //         console.log(results);
-
-
 
 //         return (
 //             <StockPresenter
 //                 loading={loading}
 //                 results={results}
 //                 error={errors}
-//             />          
+//             />
 //         );
 //     }
 // }
 
-import React, { useEffect, useState} from 'react';
-import { baseAPIs } from '../../../API';
-import StockPresenter from './StockPresenter';
-import { getDefaultNormalizer } from '@testing-library/react';
+import React, { useEffect, useState } from "react";
+import { baseAPIs } from "../../../API";
+import StockPresenter from "./StockPresenter";
+// import { getDefaultNormalizer } from '@testing-library/react';
 
 export default () => {
-    const [stocks, setStocks] = useState({
-        loading: true,
-        results: [],
-        resultsError: null
+  const [stocks, setStocks] = useState({
+    loading: true,
+    results: [],
+    industries: [],
+    resultsError: null,
+  });
+  const [dataTable, setDataTable] = useState(null);
 
+  const getData = async () => {
+    const { data } = await baseAPIs.symbolAPI();
+    const [results, resultsError] = [data];
+
+    let industries = results.map((item) => item.industry);
+    industries = [...new Set(industries)];
+
+    setStocks({
+      loading: false,
+      results,
+      industries,
+      resultsError,
     });
+  };
 
-    const getData = async () => {
-        const { data } = await baseAPIs.symbolAPI();
-        const [results, resultsError] = [data];
-        setStocks({
-            loading: false,
-            results,
-            resultsError,
-        });
-    };
+  useEffect(() => {
+    getData();
+  }, []);
 
+  useEffect(() => {
+    if (!stocks.loading && stocks.results.length) {
+      const dataTable = window.$("#stock_table").DataTable({
+        bInfo: false,
+        bLengthChange: false,
+        pageLength: 25,
+        sDom: "lrtip",
+      });
+      setDataTable(dataTable);
+    }
+  }, [stocks.loading, stocks.results]);
 
-    useEffect(() => {
-        getData();
-    }, []);
-
-    return <StockPresenter {...stocks} />;
-
-}
+  return <StockPresenter {...stocks} dataTable={dataTable} />;
+};

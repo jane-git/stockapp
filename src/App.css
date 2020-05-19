@@ -4,7 +4,7 @@ img {
 
 .landing {
   position: relative;
-  background: url('./img/visual_sub.jpg') no-repeat;
+  background: url("./img/visual_sub.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -36,4 +36,35 @@ img {
 
 .form-control::placeholder {
   color: #bbb !important;
+}
+
+.stock-search-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+.stock-search-or {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.quote-search-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 0;
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+.quote-search-wrapper .ml {
+  margin-left: 10px;
+}
+.quote-search-wrapper .mr {
+  margin-right: 10px;
+}
+.chart-wrapper {
+  width: 100%;
+  margin-top: 20px;
 }

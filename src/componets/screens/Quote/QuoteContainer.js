@@ -46,9 +46,9 @@ export default connect(mapStateToProps)((props) => {
     }
     const ctx = document.getElementById("chart").getContext("2d");
     new window.Chart(ctx, {
-      // Select chart type
+      // select of chart type
       type: "line",
-      // Data of Chart
+      // data of chart
       data: {
         labels: labels.reverse(),
         datasets: [
@@ -60,7 +60,7 @@ export default connect(mapStateToProps)((props) => {
           },
         ],
       },
-      // Option
+      // option
       options: {
         legend: {
           display: false,
