@@ -13,16 +13,25 @@ class Landing extends Component {
                                 <p className="lead">
                                     {' '}
                                     Welcome to “Jane's Stock one” No 1 stock analysts portal site
-
-                                </p>
-                                
+                                    <br></br>
+                                    If you want to see 'Price History', Please Login
+                                    <br></br>
+                                    <br></br>
+                                    <br></br>
+                                    <p className="lead">
+                                    {' '}
+                                    <br></br>
+                                    'Stocks' to see the available companies&nbsp;&nbsp;&nbsp;'Quote' to get the latest price information&nbsp;&nbsp;&nbsp;'Price History' to get the price History by date
+                                    </p>
+                                </p>                                
                                 <hr />
+                                <br></br>
                                 <Link to="register" className="btn btn-lg btn-info mr-2">
                                     Sign Up
                                 </Link>
                                 <Link to="login" className="btn btn-lg btn-light">
                                     Login
-                                </Link>
+                                </Link>                                                                                             
                             </div>
                         </div>
                     </div>
