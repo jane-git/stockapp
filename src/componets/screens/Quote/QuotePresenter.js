@@ -20,7 +20,7 @@ const QuotePresenter = ({
           <h1 className="display-4 text-center">Quote & Price History</h1>
           <br></br> 
           <p className="lead text-center">
-            {"The first date set is 'Quote' information."} <br></br> 
+            {"The date set is Last trading day."} <br></br> 
             {"'Price History' : Choose a date."}<br></br> 
           </p>
           <br></br> 

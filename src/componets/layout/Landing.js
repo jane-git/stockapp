@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
 
 class Landing extends Component {
+
+    componentDidMount() {
+        if (this.props.auth.isAuthenticated) {
+            this.props.history.push("/stock");
+        }
+    }
+    
     render() {
         return (
             <div className="landing">
@@ -14,14 +23,14 @@ class Landing extends Component {
                                     {' '}
                                     Welcome to “Jane's Stock one” No 1 stock analysts portal site
                                     <br></br>
-                                    If you want to see 'Price History', Please Login
+                                    If you want to see 'Quote', 'Price History', Please Login
                                     <br></br>
                                     <br></br>
                                     <br></br>
                                     <p className="lead">
                                     {' '}
                                     <br></br>
-                                    'Stocks' to see the available companies&nbsp;&nbsp;&nbsp;'Quote' to get the latest price information&nbsp;&nbsp;&nbsp;'Price History' to get the price History by date
+                                    'Stocks' to see the available companies&nbsp;&nbsp;&nbsp;'Quote' to get the last traded price, and volume traded&nbsp;&nbsp;&nbsp;'Price History' to get the price History by date
                                     </p>
                                 </p>                                
                                 <hr />
@@ -41,4 +50,12 @@ class Landing extends Component {
     }
 }
 
-export default Landing;
+Landing.propTypes = {
+    auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth
+});
+
+export default connect(mapStateToProps)(Landing);

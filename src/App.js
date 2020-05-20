@@ -11,7 +11,6 @@ import Navbar from "./componets/layout/Navbar";
 import Landing from "./componets/layout/Landing";
 import Stock from "./componets/screens/Stock";
 import Quote from "./componets/screens/Quote";
-import Dashboard from "./componets/screens/dashboard";
 import Register from "./componets/screens/auth/Register";
 import Login from "./componets/screens/auth/Login";
 
@@ -45,7 +44,6 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <div className="Container">
               <Route exact path="/stock" component={Stock} />
-              <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/quote/:symbol" component={Quote} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />

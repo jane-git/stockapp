@@ -1,7 +1,7 @@
 import isEmpty from '../validation/is-empty';
 import { SET_CURRENT_USER } from '../actions/types';
 
-//로그인하고 저장되는 공간
+//Space Logged In and Stored
 const initialState = {
     isAuthenticated: false,
     user: {}

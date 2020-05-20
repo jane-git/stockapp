@@ -31,8 +31,9 @@ export const loginUser = (userData, history, successUrl) => (dispatch) => {
 
       //set current user
       dispatch(setCurrentUser(decoded));
-      history.push(successUrl ? successUrl : "/stock");
+      // history.push(successUrl ? successUrl : "/stock");
     })
+    .then(() => history.push("/stock"))
     .catch((err) => {
       dispatch({
         type: GET_ERRORS,

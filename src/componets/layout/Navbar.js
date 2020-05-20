@@ -21,9 +21,7 @@ class Navbar extends Component {
             Stocks
           </Link>
         </li>
-        <a href="" onClick={this.onLogoutClick.bind(this)} className="nav-link">
-          {user.email}
-        </a>
+        <h6 className="navbar-text">{user.email}</h6>
         <a href="" onClick={this.onLogoutClick.bind(this)} className="nav-link">
         {"Logout"}
       </a>
