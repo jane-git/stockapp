@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../../../actions/authActions";
+import { UncontrolledAlert } from 'reactstrap';
 
 class Register extends Component {
   constructor() {
@@ -48,13 +49,19 @@ class Register extends Component {
   }
 
   render() {
-    const { email, password } = this.state;
-
+    const { email, password, errors } = this.state;
+    console.log(errors.message)
     return (
       <div className="register">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
+
+              {errors.message !== {} ? (
+                  <UncontrolledAlert color="danger">
+                    {errors.message}
+                  </UncontrolledAlert>) : null}
+
               <h1 className="display-4 text-center">Sign up</h1>
               <p className="lead text-center">Jane's Stock one Register</p>
               <form onSubmit={this.onSubmit}>

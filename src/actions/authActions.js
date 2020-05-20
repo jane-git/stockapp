@@ -37,8 +37,9 @@ export const loginUser = (userData, history, successUrl) => (dispatch) => {
     .catch((err) => {
       dispatch({
         type: GET_ERRORS,
-        payload: err,
+        payload: err.response.data,
       });
+      // console.log(err.response.data);
     });
 };
 

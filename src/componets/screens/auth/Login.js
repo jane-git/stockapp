@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-// import axios from 'axios';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { UncontrolledAlert } from 'reactstrap';
 import { loginUser } from "../../../actions/authActions";
 
 class Login extends Component {
@@ -28,6 +28,10 @@ class Login extends Component {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/stock");
     }
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+
   }
 
   onChange(e) {
@@ -55,13 +59,20 @@ class Login extends Component {
   }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, errors } = this.state;
+    console.log(errors.message);
 
     return (
       <div className="login">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
+              {errors !== {} ? (
+                <UncontrolledAlert color="danger">
+                  {errors.message}
+                </UncontrolledAlert>) : null} 
+          
+
               <h1 className="display-4 text-center">Log in</h1>
               <p className="lead text-center">Jane's Stock one Login</p>
               <form onSubmit={this.onSubmit}>
